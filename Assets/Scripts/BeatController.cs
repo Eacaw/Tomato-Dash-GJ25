@@ -32,8 +32,6 @@ public class BeatDetector : MonoBehaviour
     originalCameraPos = cameraTransform.localPosition;
     targetCameraPos = originalCameraPos;
 
-    AudioClip clip = Resources.Load<AudioClip>("Audio/DRIVE");
-    audioSource.clip = clip;
     audioSource.loop = true;
     audioSource.Play();
   }

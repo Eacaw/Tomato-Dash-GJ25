@@ -3,14 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class BeatDetector : MonoBehaviour
 {
-  public float sensitivity = 2.0f;
+  public float sensitivity = 7.0f;
   public float beatCooldown = 0.5f;
-  public int spectrumIndex = 2; // Low Freq.
+  public int spectrumIndex = 4; // Low Freq.
   public AudioSource audioSource;
   public Transform cameraTransform;
-  public float jumpIntensity = 1.0f;
-  public float jumpDuration = 0.4f;
-  public float smoothSpeed = 15f;
+  public float jumpIntensity = 0.3f;
+  public float jumpDuration = 0.2f;
+  public float smoothSpeed = 10f;
 
 
   private float[] spectrum = new float[1024];

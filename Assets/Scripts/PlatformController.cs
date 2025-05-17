@@ -4,7 +4,7 @@ public class PlatformController : MonoBehaviour
 {
     public float speed = 8f;
 
-    void FixedUpdate()
+    void Update()
     {
         transform.parent.transform.Translate(Vector3.back * Time.deltaTime * speed);
     }

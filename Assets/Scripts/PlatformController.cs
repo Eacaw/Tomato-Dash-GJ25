@@ -13,6 +13,7 @@ public class PlatformController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("DestroyTrigger"))
         {
+            // TODO Use object pooling
             Destroy(transform.parent.gameObject);
         }
     }

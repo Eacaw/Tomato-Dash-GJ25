@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         // Enters the spawn trigger to spawn a new platform
         if (other.gameObject.CompareTag("PlatformSpawnTrigger"))
         {
+            // TODO Use object pooling
             Instantiate(
                 prefabToInstantiate,
                 new Vector3(0, 0, other.gameObject.transform.parent.position.z + 64),

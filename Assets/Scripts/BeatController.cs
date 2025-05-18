@@ -1,8 +1,10 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class BeatDetector : MonoBehaviour
+public class BeatController : MonoBehaviour
 {
+  public event System.Action OnBeat;
+
   public float sensitivity = 7.0f;
   public float beatCooldown = 0.5f;
   public int spectrumIndex = 4; // Low Freq.
@@ -23,6 +25,8 @@ public class BeatDetector : MonoBehaviour
 
   void Start()
   {
+    gameObject.tag = "BeatController";
+
     if (audioSource == null)
       audioSource = GetComponent<AudioSource>();
 
@@ -72,10 +76,18 @@ public class BeatDetector : MonoBehaviour
 
   void TriggerOnBeat()
   {
-    // Implement your beat detection logic here
-    Debug.Log("Beat detected!");
+    OnBeat?.Invoke();
     targetCameraPos = originalCameraPos + Vector3.up * jumpIntensity;
     jumpTimer = 0f;
     isJumping = true;
+  }
+
+  public void AddBeatListener(System.Action listener)
+  {
+    OnBeat += listener;
+  }
+  public void RemoveBeatListener(System.Action listener)
+  {
+    OnBeat -= listener;
   }
 }

@@ -7,6 +7,7 @@ TagManager:
   - PlatformSpawnTrigger
   - Platform
   - DestroyTrigger
+  - Collectable
   layers:
   - Default
   - TransparentFX

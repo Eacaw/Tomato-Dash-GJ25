@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject Camera;
+    public GameObject prefabToInstantiate;
+
     private int currentLane = 1; // 0 = left, 1 = middle, 2 = right
     private float laneWidth = 2.5f; // Distance between lanes
     private Vector3 targetPosition;
-    public GameObject Camera;
 
-    public GameObject prefabToInstantiate;
+    private bool spawnCooldown = false;
+    private float spawnCooldownTime = 1.0f; // seconds
+    private float spawnCooldownTimer = 0f;
 
     void Awake()
     {
@@ -35,9 +39,9 @@ public class PlayerController : MonoBehaviour
         // Subtly rotate the camera in the direction of the player
         Vector3 directionToPlayer =
             new Vector3(
-            transform.position.x + (currentLane - 1) * 0.5f, // Adjust based on currentLane
-            transform.position.y,
-            transform.position.z
+                transform.position.x + (currentLane - 1) * 0.5f, // Adjust based on currentLane
+                transform.position.y,
+                transform.position.z
             ) - Camera.transform.position;
 
         // Offset the direction slightly to avoid pointing directly at the player
@@ -59,6 +63,15 @@ public class PlayerController : MonoBehaviour
             Quaternion.Euler(eulerRotation),
             Time.deltaTime * 5f
         );
+
+        if (spawnCooldown)
+        {
+            spawnCooldownTimer -= Time.deltaTime;
+            if (spawnCooldownTimer <= 0f)
+            {
+                spawnCooldown = false;
+            }
+        }
     }
 
     private void UpdateTargetPosition()
@@ -73,7 +86,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Enters the spawn trigger to spawn a new platform
-        if (other.gameObject.CompareTag("PlatformSpawnTrigger"))
+        if (!spawnCooldown && other.gameObject.CompareTag("PlatformSpawnTrigger"))
         {
             // TODO Use object pooling
             Instantiate(
@@ -81,6 +94,8 @@ public class PlayerController : MonoBehaviour
                 new Vector3(0, 0, other.gameObject.transform.parent.position.z + 64),
                 Quaternion.identity
             );
+            spawnCooldown = true;
+            spawnCooldownTimer = spawnCooldownTime;
         }
     }
 }

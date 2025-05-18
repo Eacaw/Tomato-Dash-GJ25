@@ -3,12 +3,7 @@ using System.Collections;
 
 public class CoinController : MonoBehaviour
 {
-    public GameObject collectablePrefab; // Reference to the prefab to instantiate
-
-    // Parameters for placement
-    public float platformY = 1.0f; // Set this to your platform's Y position
-    public float abovePlatformOffset = 1f; // How much above the platform
-    public float laneWidth = 2.5f;
+    public GameObject collectablePrefab;
     public PlatformController platformController;
 
     private float[] lanes = new float[] { -2.5f, 0f, 2.5f };
@@ -35,10 +30,11 @@ public class CoinController : MonoBehaviour
 
             Vector3 targetPos = new Vector3(
                 lanes[laneIndex],
-                platformY + abovePlatformOffset,
+                1.0f,
                 transform.position.z + zPositions[i]
             );
 
+            // Todo use object pooling
             GameObject coin = Instantiate(
                 collectablePrefab,
                 targetPos,

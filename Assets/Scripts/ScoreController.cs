@@ -29,7 +29,7 @@ public class ScoreController : MonoBehaviour
     {
         if (scoreLabel != null)
         {
-            scoreLabel.text = "Score: " + score.ToString();
+            scoreLabel.text = score.ToString();
         }
     }
 }

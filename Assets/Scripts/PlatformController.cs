@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlatformController : MonoBehaviour
 {
     public float speed = 8f;
+    public bool isInitialPlatform = false;
 
     void Update()
     {

@@ -9,6 +9,7 @@ public class CoinController : MonoBehaviour
     public float platformY = 1.0f; // Set this to your platform's Y position
     public float abovePlatformOffset = 1f; // How much above the platform
     public float laneWidth = 2.5f;
+    public PlatformController platformController;
 
     private float[] lanes = new float[] { -2.5f, 0f, 2.5f };
     private int collectableCount = 8;
@@ -16,7 +17,10 @@ public class CoinController : MonoBehaviour
 
     void Start()
     {
-        PlaceCollectables();
+        if (!platformController.isInitialPlatform)
+        {
+            PlaceCollectables();
+        }
     }
 
     private void PlaceCollectables()

@@ -2,15 +2,32 @@ using UnityEngine;
 
 public class CollectableController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float bobSpeed = 2f;
+    public float bobHeight = 0.5f;
+    private Vector3 startPosition;
+    private ScoreController scoreController;
+
+    private void Start()
     {
-        
+        startPosition = transform.position;
+        scoreController = FindFirstObjectByType<ScoreController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        float newY = startPosition.y + Mathf.Sin(Time.time * bobSpeed) * bobHeight;
+        transform.position = new Vector3(startPosition.x, newY, transform.position.z);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            scoreController.AddScore(1);
+
+            // Optionally, play a sound or particle effect here
+
+            Destroy(gameObject);
+        }
     }
 }

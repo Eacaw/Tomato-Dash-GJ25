@@ -25,7 +25,7 @@ public class CollectableController : MonoBehaviour
         {
             scoreController.AddScore(1);
 
-            // Optionally, play a sound or particle effect here
+            // Todo play a sound
 
             Destroy(gameObject);
         }

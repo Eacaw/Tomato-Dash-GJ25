@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement style="flex-grow: 1; right: 0; top: 0; max-width: 25%; max-height: 10%; position: absolute; min-width: 25%; min-height: 10%; width: 25%; height: 10%; justify-content: center; align-self: center; align-content: center; align-items: center; flex-direction: row; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+            <ui:Label text="Score: " name="ScoreText" style="color: rgb(255, 255, 255);" />
+            <ui:Label text="0" name="Score" style="color: rgb(255, 255, 255);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

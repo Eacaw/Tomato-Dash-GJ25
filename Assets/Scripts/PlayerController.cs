@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPosition;
 
     private bool spawnCooldown = false;
-    private float spawnCooldownTime = 1.0f; // seconds
+    private float spawnCooldownTime = 3.0f; // seconds
     private float spawnCooldownTimer = 0f;
 
     void Awake()

@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 279288371}
   m_Layer: 0
   m_Name: Beat Detector
-  m_TagString: Untagged
+  m_TagString: BeatController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

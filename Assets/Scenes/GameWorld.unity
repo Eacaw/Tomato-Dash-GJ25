@@ -580,7 +580,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 330585543}
-  prefabToInstantiate: {fileID: 6928381561504825917, guid: 8598ac4403713f849a8c9ddaa88da8a1, type: 3}
+  prefabsToInstantiate:
+  - {fileID: 6928381561504825917, guid: 8598ac4403713f849a8c9ddaa88da8a1, type: 3}
+  - {fileID: 6928381561504825917, guid: 4454d0a7e08f2ed45b2c279dea5247fd, type: 3}
 --- !u!54 &714688128
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,22 +1,29 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject Camera;
-    public GameObject prefabToInstantiate;
+    public GameObject[] prefabsToInstantiate;
 
     private int currentLane = 1; // 0 = left, 1 = middle, 2 = right
     private float laneWidth = 2.5f; // Distance between lanes
     private Vector3 targetPosition;
+    private bool isDead = false;
 
     private bool spawnCooldown = false;
     private float spawnCooldownTime = 3.0f; // seconds
     private float spawnCooldownTimer = 0f;
     private Animator animator;
+    private UIDocument uiDocument;
+    private Label gameOverLabel;
 
     void Awake()
     {
+        uiDocument = FindFirstObjectByType<UIDocument>();
+
+        gameOverLabel = uiDocument.rootVisualElement.Q<Label>("GameOver");
         targetPosition = transform.position;
         animator = GetComponent<Animator>();
     }
@@ -31,7 +38,7 @@ public class PlayerController : MonoBehaviour
         bool laneChanged = false;
         float turnDirection = 0f;
 
-        if (Input.GetAxis("Horizontal") < 0 && currentLane > 0)
+        if (Input.GetAxis("Horizontal") < 0 && currentLane > 0 && !isDead)
         {
             currentLane--;
             UpdateTargetPosition();
@@ -40,7 +47,7 @@ public class PlayerController : MonoBehaviour
             turnDirection = -1f;
             animator.SetTrigger("StrafeLeft");
         }
-        else if (Input.GetAxis("Horizontal") > 0 && currentLane < 2)
+        else if (Input.GetAxis("Horizontal") > 0 && currentLane < 2 && !isDead)
         {
             currentLane++;
             UpdateTargetPosition();
@@ -51,9 +58,20 @@ public class PlayerController : MonoBehaviour
         }
 
         // Handle jump input
-        if (!isJumping && Input.GetKeyDown(KeyCode.Space))
+        if (!isJumping && Input.GetKeyDown(KeyCode.Space) && !isDead)
         {
             StartCoroutine(JumpRoutine());
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            // Restart the game
+            Time.timeScale = 1f;
+            gameOverLabel.style.display = DisplayStyle.None;
+            isDead = false;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+            );
         }
 
         IEnumerator JumpRoutine()
@@ -179,6 +197,9 @@ public class PlayerController : MonoBehaviour
         if (!spawnCooldown && other.gameObject.CompareTag("PlatformSpawnTrigger"))
         {
             // TODO Use object pooling
+            GameObject prefabToInstantiate = prefabsToInstantiate[
+                Random.Range(0, prefabsToInstantiate.Length)
+            ];
             Instantiate(
                 prefabToInstantiate,
                 new Vector3(0, 0, other.gameObject.transform.parent.position.z + 64),
@@ -186,6 +207,33 @@ public class PlayerController : MonoBehaviour
             );
             spawnCooldown = true;
             spawnCooldownTimer = spawnCooldownTime;
+        }
+        else if (other.gameObject.CompareTag("Obstacle"))
+        {
+            isDead = true;
+
+            // If the trigger was infront of the player, trigger animation 'DeathA', else 'DeathB'
+            Vector3 triggerPosition = other.gameObject.transform.position;
+            Vector3 playerPosition = transform.position;
+            if (triggerPosition.z > playerPosition.z)
+            {
+                animator.SetTrigger("DeathA");
+            }
+            else
+            {
+                animator.SetTrigger("DeathB");
+            }
+
+            // Final all instances of PlatformController using FindObjectsByType in the scene and set their speed to 0
+            PlatformController[] platformControllers = FindObjectsByType<PlatformController>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None
+            );
+            foreach (var controller in platformControllers)
+            {
+                controller.speed = 0f;
+            }
+            gameOverLabel.style.display = DisplayStyle.Flex;
         }
     }
 }

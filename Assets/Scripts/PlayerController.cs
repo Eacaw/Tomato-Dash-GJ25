@@ -209,7 +209,16 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("Obstacle"))
         {
             // Stop the game by pausing the time scale
-            Time.timeScale = 0f;
+            animator.SetTrigger("Death");
+            // Final all instances of PlatformController using FindObjectsByType in the scene and set their speed to 0
+            PlatformController[] platformControllers = FindObjectsByType<PlatformController>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None
+            );
+            foreach (var controller in platformControllers)
+            {
+                controller.speed = 0f;
+            }
             gameOverLabel.style.display = DisplayStyle.Flex;
         }
     }

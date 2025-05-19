@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject Camera;
-    public GameObject prefabToInstantiate;
+    public GameObject[] prefabsToInstantiate;
 
     private int currentLane = 1; // 0 = left, 1 = middle, 2 = right
     private float laneWidth = 2.5f; // Distance between lanes
@@ -14,9 +15,14 @@ public class PlayerController : MonoBehaviour
     private float spawnCooldownTime = 3.0f; // seconds
     private float spawnCooldownTimer = 0f;
     private Animator animator;
+    private UIDocument uiDocument;
+    private Label gameOverLabel;
 
     void Awake()
     {
+        uiDocument = FindFirstObjectByType<UIDocument>();
+
+        gameOverLabel = uiDocument.rootVisualElement.Q<Label>("GameOver");
         targetPosition = transform.position;
         animator = GetComponent<Animator>();
     }
@@ -54,6 +60,16 @@ public class PlayerController : MonoBehaviour
         if (!isJumping && Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(JumpRoutine());
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            // Restart the game
+            Time.timeScale = 1f;
+            gameOverLabel.style.display = DisplayStyle.None;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+            );
         }
 
         IEnumerator JumpRoutine()
@@ -179,6 +195,9 @@ public class PlayerController : MonoBehaviour
         if (!spawnCooldown && other.gameObject.CompareTag("PlatformSpawnTrigger"))
         {
             // TODO Use object pooling
+            GameObject prefabToInstantiate = prefabsToInstantiate[
+                Random.Range(0, prefabsToInstantiate.Length)
+            ];
             Instantiate(
                 prefabToInstantiate,
                 new Vector3(0, 0, other.gameObject.transform.parent.position.z + 64),
@@ -186,6 +205,12 @@ public class PlayerController : MonoBehaviour
             );
             spawnCooldown = true;
             spawnCooldownTimer = spawnCooldownTime;
+        }
+        else if (other.gameObject.CompareTag("Obstacle"))
+        {
+            // Stop the game by pausing the time scale
+            Time.timeScale = 0f;
+            gameOverLabel.style.display = DisplayStyle.Flex;
         }
     }
 }

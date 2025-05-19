@@ -16,17 +16,6 @@ public class CoinController : MonoBehaviour
         {
             PlaceCollectables();
         }
-        Debug.Log("Obastacle positions:");
-        for (int i = 0; i < platformController.obstaclePositions.GetLength(0); i++)
-        {
-            for (int j = 0; j < platformController.obstaclePositions.GetLength(1); j++)
-            {
-                if (platformController.obstaclePositions[i, j])
-                {
-                    Debug.Log($"[{i},{j}]: {platformController.obstaclePositions[i, j]}");
-                }
-            }
-        }
     }
 
     private void PlaceCollectables()
@@ -53,7 +42,6 @@ public class CoinController : MonoBehaviour
             // If no valid lane is found, skip this collectable
             if (!validLaneFound)
             {
-                Debug.Log($"No valid lane found for collectable at index {i}");
                 continue;
             }
 

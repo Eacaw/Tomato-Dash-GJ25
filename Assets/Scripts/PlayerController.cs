@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,29 +13,118 @@ public class PlayerController : MonoBehaviour
     private bool spawnCooldown = false;
     private float spawnCooldownTime = 3.0f; // seconds
     private float spawnCooldownTimer = 0f;
+    private Animator animator;
 
     void Awake()
     {
         targetPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
+
+    private float laneTurnAngle = 20f; // Maximum angle to tilt when changing lanes
+    private float turnResetSpeed = 10f; // How quickly to return to forward
+    private float currentTurn = 0f; // Current turn angle
+    private bool isJumping = false;
 
     void Update()
     {
+        bool laneChanged = false;
+        float turnDirection = 0f;
+
         if (Input.GetAxis("Horizontal") < 0 && currentLane > 0)
         {
             currentLane--;
             UpdateTargetPosition();
             Input.ResetInputAxes();
+            laneChanged = true;
+            turnDirection = -1f;
+            animator.SetTrigger("StrafeLeft");
         }
         else if (Input.GetAxis("Horizontal") > 0 && currentLane < 2)
         {
             currentLane++;
             UpdateTargetPosition();
             Input.ResetInputAxes();
+            laneChanged = true;
+            turnDirection = 1f;
+            animator.SetTrigger("StrafeRight");
         }
 
-        // Smoothly move the player to the target position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 10f);
+        // Handle jump input
+        if (!isJumping && Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(JumpRoutine());
+        }
+
+        IEnumerator JumpRoutine()
+        {
+            isJumping = true;
+            animator.SetTrigger("Jump");
+
+            // Smooth jump parameters
+            float jumpHeight = 1.5f;
+            float jumpDuration = 0.5f;
+            float elapsedTime = 0f;
+
+            Vector3 startPosition = transform.position;
+            Vector3 peakPosition = startPosition + Vector3.up * jumpHeight;
+
+            // Move up to the peak
+            while (elapsedTime < jumpDuration)
+            {
+                float t = Mathf.Clamp01(elapsedTime / jumpDuration);
+                transform.position = Vector3.Lerp(startPosition, peakPosition, t);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            // Reset elapsed time for descent
+            elapsedTime = 0f;
+
+            // Move down to the original position
+            while (elapsedTime < jumpDuration)
+            {
+                float t = Mathf.Clamp01(elapsedTime / jumpDuration);
+                transform.position = Vector3.Lerp(peakPosition, startPosition, t);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = startPosition; // Ensure exact position
+            animator.SetTrigger("JumpLand");
+            isJumping = false;
+        }
+
+        // Smoothly move the player to the target position, preserving the y-position during a jump
+        Vector3 newPosition = Vector3.Lerp(
+            transform.position,
+            targetPosition,
+            Time.deltaTime * 10f
+        );
+        if (!isJumping)
+        {
+            newPosition.y = transform.position.y; // Preserve current y-position if not jumping
+        }
+        transform.position = newPosition;
+
+        // // Handle player model rotation for lane change
+        if (laneChanged)
+        {
+            currentTurn = laneTurnAngle * turnDirection;
+        }
+        else
+        {
+            // Smoothly return to forward
+            currentTurn = Mathf.Lerp(currentTurn, 0f, Time.deltaTime * turnResetSpeed);
+        }
+        // Apply rotation around Y axis (for yaw) or Z axis (for roll)
+        // Smoothly interpolate the rotation for a smooth turn effect
+        Quaternion targetPlayerRotation = Quaternion.Euler(0f, 0f, currentTurn);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetPlayerRotation,
+            Time.deltaTime * 8f
+        );
 
         // Subtly rotate the camera in the direction of the player
         Vector3 directionToPlayer =

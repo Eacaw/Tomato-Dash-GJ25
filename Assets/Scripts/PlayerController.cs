@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private int currentLane = 1; // 0 = left, 1 = middle, 2 = right
     private float laneWidth = 2.5f; // Distance between lanes
     private Vector3 targetPosition;
+    private bool isDead = false;
 
     private bool spawnCooldown = false;
     private float spawnCooldownTime = 3.0f; // seconds
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
         bool laneChanged = false;
         float turnDirection = 0f;
 
-        if (Input.GetAxis("Horizontal") < 0 && currentLane > 0)
+        if (Input.GetAxis("Horizontal") < 0 && currentLane > 0 && !isDead)
         {
             currentLane--;
             UpdateTargetPosition();
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
             turnDirection = -1f;
             animator.SetTrigger("StrafeLeft");
         }
-        else if (Input.GetAxis("Horizontal") > 0 && currentLane < 2)
+        else if (Input.GetAxis("Horizontal") > 0 && currentLane < 2 && !isDead)
         {
             currentLane++;
             UpdateTargetPosition();
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Handle jump input
-        if (!isJumping && Input.GetKeyDown(KeyCode.Space))
+        if (!isJumping && Input.GetKeyDown(KeyCode.Space) && !isDead)
         {
             StartCoroutine(JumpRoutine());
         }
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
             // Restart the game
             Time.timeScale = 1f;
             gameOverLabel.style.display = DisplayStyle.None;
+            isDead = false;
             UnityEngine.SceneManagement.SceneManager.LoadScene(
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
             );
@@ -208,8 +210,20 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
-            // Stop the game by pausing the time scale
-            animator.SetTrigger("Death");
+            isDead = true;
+
+            // If the trigger was infront of the player, trigger animation 'DeathA', else 'DeathB'
+            Vector3 triggerPosition = other.gameObject.transform.position;
+            Vector3 playerPosition = transform.position;
+            if (triggerPosition.z > playerPosition.z)
+            {
+                animator.SetTrigger("DeathA");
+            }
+            else
+            {
+                animator.SetTrigger("DeathB");
+            }
+
             // Final all instances of PlatformController using FindObjectsByType in the scene and set their speed to 0
             PlatformController[] platformControllers = FindObjectsByType<PlatformController>(
                 FindObjectsInactive.Include,

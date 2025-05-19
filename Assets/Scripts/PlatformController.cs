@@ -9,20 +9,20 @@ public class PlatformController : MonoBehaviour
     public bool isInitialPlatform = false;
 
     [SerializeField]
-    private bool[] RightLane = new bool[8];
+    private bool[] LeftLaneObstacles = new bool[8];
 
     [SerializeField]
-    private bool[] MiddleLane = new bool[8];
+    private bool[] MiddleLaneObstacles = new bool[8];
 
     [SerializeField]
-    private bool[] LeftLane = new bool[8];
+    private bool[] RightLaneObstacles = new bool[8];
 
     public bool[,] obstaclePositions
     {
         get
         {
             bool[,] combined = new bool[8, 3];
-            bool[][] rows = { RightLane, MiddleLane, LeftLane };
+            bool[][] rows = { LeftLaneObstacles, MiddleLaneObstacles, RightLaneObstacles };
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 3; j++)

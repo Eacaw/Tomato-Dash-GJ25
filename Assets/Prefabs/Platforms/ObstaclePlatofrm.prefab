@@ -2585,9 +2585,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   isInitialPlatform: 0
-  RightLane: 0001000000010000
-  MiddleLane: 0000000000000100
-  LeftLane: 0000010001000000
+  LeftLaneObstacles: 0001000000010000
+  MiddleLaneObstacles: 0000000000000100
+  RightLaneObstacles: 0000010001000000
 --- !u!65 &3659316309474437803
 BoxCollider:
   m_ObjectHideFlags: 0

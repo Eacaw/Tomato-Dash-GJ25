@@ -7,6 +7,9 @@ TagManager:
   - PlatformSpawnTrigger
   - Platform
   - DestroyTrigger
+  - Collectable
+  - Obstacle
+  - BeatController
   layers:
   - Default
   - TransparentFX

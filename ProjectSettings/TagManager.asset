@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - DestroyTrigger
   - Collectable
+  - BeatController
   layers:
   - Default
   - TransparentFX

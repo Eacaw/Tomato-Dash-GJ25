@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private UIDocument uiDocument;
     private Label gameOverLabel;
 
+    private BeatController beatController;
+
     void Awake()
     {
         uiDocument = FindFirstObjectByType<UIDocument>();
@@ -26,6 +28,13 @@ public class PlayerController : MonoBehaviour
         gameOverLabel = uiDocument.rootVisualElement.Q<Label>("GameOver");
         targetPosition = transform.position;
         animator = GetComponent<Animator>();
+
+        // Beat Controller logic
+        if (beatController == null)
+        {
+            beatController = FindFirstObjectByType<BeatController>();
+            beatController.AddBeatListener(OnBeat);
+        }
     }
 
     private float laneTurnAngle = 20f; // Maximum angle to tilt when changing lanes
@@ -235,5 +244,53 @@ public class PlayerController : MonoBehaviour
             }
             gameOverLabel.style.display = DisplayStyle.Flex;
         }
+    }
+
+    private void OnBeat()
+    {
+        StartCoroutine(CameraJump());
+    }
+
+    private IEnumerator CameraJump()
+    {
+        // Camera jump parameters
+        float jumpHeight = 0.2f;
+        float jumpDuration = 0.1f;
+        float elapsedTime = 0f;
+        float smoothSpeed = 10f;
+
+        // Store original camera position
+        Vector3 originalPosition = Camera.transform.localPosition;
+        Vector3 peakPosition = originalPosition + Vector3.up * jumpHeight;
+        
+        // Move up
+        while (elapsedTime < jumpDuration)
+        {
+            Camera.transform.localPosition = Vector3.Lerp(
+                Camera.transform.localPosition,
+                peakPosition,
+                Time.deltaTime * smoothSpeed
+            );
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Reset for descent
+        elapsedTime = 0f;
+        
+        // Move down
+        while (elapsedTime < jumpDuration)
+        {
+            Camera.transform.localPosition = Vector3.Lerp(
+                Camera.transform.localPosition,
+                originalPosition,
+                Time.deltaTime * smoothSpeed
+            );
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Ensure we return to the exact original position
+        Camera.transform.localPosition = originalPosition;
     }
 }

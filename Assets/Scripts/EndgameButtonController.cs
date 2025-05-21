@@ -9,7 +9,7 @@ public class EndgameButtonController : MonoBehaviour
 
     private void Start()
     {
-        tryAgainButton.onClick.AddListener(() => LoadScene(SceneManager.GetActiveScene().name));
+        tryAgainButton.onClick.AddListener(() => LoadScene("GameWorld"));
         mainMenuButton.onClick.AddListener(() => LoadScene("MainMenu"));
     }
 

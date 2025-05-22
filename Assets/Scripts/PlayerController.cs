@@ -79,9 +79,9 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(JumpRoutine());
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && isDead)
         {
-            RestartGame();
+            MoveToEndGameScene();
         }
 
         UpdateTurn(laneChanged, turnDirection);
@@ -156,14 +156,9 @@ public class PlayerController : MonoBehaviour
         );
     }
 
-    private void RestartGame()
+    private void MoveToEndGameScene()
     {
-        Time.timeScale = 1f;
-        gameOverLabel.style.display = DisplayStyle.None;
-        isDead = false;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(
-            UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
-        );
+        UnityEngine.SceneManagement.SceneManager.LoadScene("EndGame");
     }
 
     private IEnumerator JumpRoutine()
@@ -329,7 +324,6 @@ public class PlayerController : MonoBehaviour
 
     private void GameOver()
     {
-        gameOverLabel.style.display = DisplayStyle.Flex;
-        isDead = true;
+        MoveToEndGameScene();
     }
 }

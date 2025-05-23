@@ -209,6 +209,10 @@ public class PlayerController : MonoBehaviour
         {
             HandleDeath(other);
         }
+        else if (other.gameObject.CompareTag("TutorialObstacle"))
+        {
+            HandleDeath(other, false);
+        }
     }
 
     private void SpawnPlatform(Collider other)
@@ -225,7 +229,7 @@ public class PlayerController : MonoBehaviour
         spawnCooldownTimer = spawnCooldownTime;
     }
 
-    private void HandleDeath(Collider other)
+    private void HandleDeath(Collider other, bool reduceLives = true)
     {
         isDead = true;
         Vector3 triggerPosition = other.gameObject.transform.position;
@@ -246,12 +250,18 @@ public class PlayerController : MonoBehaviour
         {
             controller.speed = 0f;
         }
-        if (livesRemaining > 0)
+        if (livesRemaining > 0 && reduceLives)
         {
             livesRemaining--;
             livesLabel.text = "Lives: " + livesRemaining.ToString();
             respawnLabel.style.display = DisplayStyle.Flex;
-            StartCoroutine(Respawn());
+            StartCoroutine(Respawn(other));
+        }
+        else if (livesRemaining > 0 && !reduceLives)
+        {
+            respawnLabel.text = "Try to avoid obstacles!";
+            respawnLabel.style.display = DisplayStyle.Flex;
+            StartCoroutine(Respawn(other));
         }
         else
         {
@@ -259,12 +269,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator Respawn()
+    private IEnumerator Respawn(Collider other)
     {
-        yield return new WaitForSeconds(3f);
+        respawnLabel.style.display = DisplayStyle.Flex;
+        respawnLabel.text = "Respawning in 3...";
+        yield return new WaitForSeconds(1f);
+        respawnLabel.text = "Respawning in 2...";
+        yield return new WaitForSeconds(1f);
+        respawnLabel.text = "Respawning in 1...";
+        yield return new WaitForSeconds(1f);
         respawnLabel.style.display = DisplayStyle.None;
 
-        Time.timeScale = 1f;
         PlatformController[] platformControllers = FindObjectsByType<PlatformController>(
             FindObjectsInactive.Include,
             FindObjectsSortMode.None
@@ -312,6 +327,14 @@ public class PlayerController : MonoBehaviour
             transform.position.y,
             transform.position.z
         );
+
+        // Destroy the other obstacle in the tutorial area
+        // Player Crashes to learn a lesson -> then path is clear next time, no lives lost
+        if (other.gameObject.CompareTag("TutorialObstacle"))
+        {
+            Destroy(other.gameObject);
+        }
+
         animator.SetTrigger("Respawn");
         yield return new WaitForSeconds(2.5f);
         foreach (var controller in platformControllers)

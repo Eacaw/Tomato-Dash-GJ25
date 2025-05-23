@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public Camera camera;
     public GameObject[] prefabsToInstantiate;
+    public Sprite[] tutorialImages;
 
     private int currentLane = 1; // 0 = left, 1 = middle, 2 = right
     private float laneWidth = 2.5f; // Distance between lanes
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
     private bool spawnCooldown = false;
     private float spawnCooldownTime = 3.0f; // seconds
     private float spawnCooldownTimer = 0f;
+
+    // UI Elements
     private Animator animator;
     private UIDocument uiDocument;
     private Label gameOverLabel;
@@ -26,6 +29,15 @@ public class PlayerController : MonoBehaviour
     private float turnResetSpeed = 10f; // How quickly to return to forward
     private float currentTurn = 0f; // Current turn angle
     private bool isJumping = false;
+
+    private int currentTutorialStep = 0;
+    private string[] tutorialMessages =
+    {
+        "Move left/right between lanes",
+        "Jump over obstacles on the floor",
+        "Collect apples to gain points",
+        "Avoid the obstacles to survive",
+    };
 
     void Awake()
     {
@@ -201,9 +213,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Trigger Entered: " + other.gameObject.name);
         if (!spawnCooldown && other.gameObject.CompareTag("PlatformSpawnTrigger"))
         {
             SpawnPlatform(other);
+        }
+        else if (other.gameObject.CompareTag("TutorialTrigger"))
+        {
+            HandleTutorialTrigger();
+            Debug.Log("Tutorial Trigger Entered");
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
@@ -213,6 +231,41 @@ public class PlayerController : MonoBehaviour
         {
             HandleDeath(other, false);
         }
+    }
+
+    private void HandleTutorialTrigger()
+    {
+        Label tutorialLabel = uiDocument.rootVisualElement.Q<Label>("InstructionsLabel");
+        VisualElement tutorialImageContainer = uiDocument.rootVisualElement.Q<VisualElement>(
+            "InstructionsImage"
+        );
+        VisualElement instructionsOverlay = uiDocument.rootVisualElement.Q<VisualElement>(
+            "Instructions"
+        );
+
+        if (currentTutorialStep > tutorialMessages.Length - 1)
+        {
+            instructionsOverlay.style.display = DisplayStyle.None;
+            tutorialLabel.style.display = DisplayStyle.None;
+            tutorialImageContainer.style.display = DisplayStyle.None;
+        }
+        else
+        {
+            if (currentTutorialStep <= 3)
+            {
+                tutorialImageContainer.style.backgroundImage = new StyleBackground(
+                    tutorialImages[currentTutorialStep]
+                );
+            }
+            else
+            {
+                tutorialImageContainer.style.backgroundImage = new StyleBackground();
+            }
+            tutorialLabel.text = tutorialMessages[currentTutorialStep];
+            tutorialLabel.style.display = DisplayStyle.Flex;
+            tutorialImageContainer.style.display = DisplayStyle.Flex;
+        }
+        currentTutorialStep++;
     }
 
     private void SpawnPlatform(Collider other)

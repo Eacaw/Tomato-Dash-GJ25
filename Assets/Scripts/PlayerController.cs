@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         "Avoid the obstacles to survive",
     };
 
-    public float invulnerableDuration = 3f;
+    public float invulnerableDuration = 1.5f;
     private bool isInvulnerable = false;
     private float invulnerableTimer = 0f;
     private VisualElement invulnerableProgressBar;
@@ -429,7 +429,10 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("TutorialObstacle"))
         {
-            other.gameObject.SetActive(false);
+            if (!other.gameObject.transform.parent.gameObject.CompareTag("Door"))
+            {
+                other.gameObject.SetActive(false);
+            }
         }
 
         animator.SetTrigger("Respawn");

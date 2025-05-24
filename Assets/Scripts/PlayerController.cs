@@ -364,6 +364,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Respawn(Collider other)
     {
+        isInvulnerable = true;
         respawnLabel.style.display = DisplayStyle.Flex;
         respawnLabel.text = "Respawning in 3...";
         yield return new WaitForSeconds(1f);
@@ -458,7 +459,7 @@ public class PlayerController : MonoBehaviour
         spawnCooldown = false;
 
         // Start invulnerability
-        isInvulnerable = true;
+
         invulnerableTimer = invulnerableDuration;
         if (invulnerableProgressBar != null)
         {

@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: 'LeftLaneObstacles.Array.data[7]'
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: 'RightLaneObstacles.Array.data[7]'
@@ -322,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: 'MiddleLaneObstacles.Array.data[7]'
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

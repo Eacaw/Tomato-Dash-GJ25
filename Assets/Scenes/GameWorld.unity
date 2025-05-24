@@ -250,6 +250,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorRight
       objectReference: {fileID: 0}
+    - target: {fileID: 4980308074649482541, guid: 9489053503eb43d4ebe9067389317f2d, type: 3}
+      propertyPath: m_TagString
+      value: TutorialObstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640119338872807453, guid: 9489053503eb43d4ebe9067389317f2d, type: 3}
+      propertyPath: m_TagString
+      value: TutorialObstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8442469134782980601, guid: 9489053503eb43d4ebe9067389317f2d, type: 3}
+      propertyPath: m_TagString
+      value: TutorialObstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1316,9 +1328,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7555093735388798679, guid: aa120f0039b1fb14187ef99557ed0816, type: 3}
+      propertyPath: m_TagString
+      value: TutorialObstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 8491479025506196021, guid: aa120f0039b1fb14187ef99557ed0816, type: 3}
       propertyPath: m_Name
       value: DoorMiddle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745068305895589177, guid: aa120f0039b1fb14187ef99557ed0816, type: 3}
+      propertyPath: m_TagString
+      value: TutorialObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1658,6 +1678,14 @@ PrefabInstance:
     - target: {fileID: 3240042641708852193, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
       propertyPath: m_Name
       value: DoorLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600744287263398231, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
+      propertyPath: m_TagString
+      value: TutorialTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562962558183626931, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
+      propertyPath: m_TagString
+      value: TutorialTrigger
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4784,6 +4812,14 @@ PrefabInstance:
     - target: {fileID: 3240042641708852193, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
       propertyPath: m_Name
       value: DoorLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600744287263398231, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
+      propertyPath: m_TagString
+      value: TutorialObstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8562962558183626931, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
+      propertyPath: m_TagString
+      value: TutorialObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

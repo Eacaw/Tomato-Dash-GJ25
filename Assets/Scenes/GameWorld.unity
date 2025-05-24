@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorRight
       objectReference: {fileID: 0}
+    - target: {fileID: 3389693721919199915, guid: 9489053503eb43d4ebe9067389317f2d, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 4980308074649482541, guid: 9489053503eb43d4ebe9067389317f2d, type: 3}
       propertyPath: m_TagString
       value: TutorialObstacle
@@ -280,6 +284,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_SoftShadowQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_UsePipelineSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4058707785923065446, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -320,9 +336,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4716434593900927021, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716434593900927021, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543771657211691267, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543771657211691267, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6928381561504825917, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: m_Name
       value: TutorialHallway3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_SoftShadowQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_UsePipelineSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: 'LeftLaneObstacles.Array.data[7]'
@@ -1228,6 +1272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorMiddle
       objectReference: {fileID: 0}
+    - target: {fileID: 8491479025506196021, guid: aa120f0039b1fb14187ef99557ed0816, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 8745068305895589177, guid: aa120f0039b1fb14187ef99557ed0816, type: 3}
       propertyPath: m_TagString
       value: TutorialObstacle
@@ -1571,13 +1619,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 3240042641708852193, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994260507906256851, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994260507906256851, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994260507906256851, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5600744287263398231, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
       propertyPath: m_TagString
-      value: TutorialTrigger
+      value: TutorialObstacle
       objectReference: {fileID: 0}
     - target: {fileID: 8562962558183626931, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
       propertyPath: m_TagString
-      value: TutorialTrigger
+      value: TutorialObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1705,6 +1769,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_SoftShadowQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_UsePipelineSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4058707785923065446, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1745,9 +1821,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4716434593900927021, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716434593900927021, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543771657211691267, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543771657211691267, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6928381561504825917, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: m_Name
       value: TutorialHallway1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_SoftShadowQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_UsePipelineSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: isActivePlatform
@@ -2056,6 +2160,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_SoftShadowQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_UsePipelineSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4058707785923065446, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2096,9 +2212,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4716434593900927021, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716434593900927021, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543771657211691267, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543771657211691267, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6928381561504825917, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: m_Name
       value: TutorialHallway2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_SoftShadowQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_UsePipelineSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: isInitialPlatform
@@ -4459,6 +4603,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorLeft
       objectReference: {fileID: 0}
+    - target: {fileID: 3240042641708852193, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 5600744287263398231, guid: e7a16f3e439c3f145a9a65e29b8bd0f5, type: 3}
       propertyPath: m_TagString
       value: TutorialObstacle
@@ -4538,6 +4686,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_SoftShadowQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_UsePipelineSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449100495077596945, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4058707785923065446, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4578,9 +4738,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4716434593900927021, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716434593900927021, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543771657211691267, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543771657211691267, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6928381561504825917, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: m_Name
       value: TutorialHallway4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_SoftShadowQuality
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_UsePipelineSettings
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: m_AdditionalLightsShadowResolutionTier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: 'LeftLaneObstacles.Array.data[3]'

@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -376,11 +378,16 @@ public class PlayerController : MonoBehaviour
             FindObjectsSortMode.None
         );
 
-        float offset = Random.Range(15f, 20f);
-        foreach (var controller in platformControllers)
-        {
-            controller.transform.parent.position += new Vector3(0, 0, offset);
-        }
+        PlatformController[] respawnablePlatformControllers = platformControllers
+            .Where(controller =>
+            {
+                float platformZ = controller.transform.position.z;
+                float playerZ = transform.position.z;
+                return platformZ <= playerZ && platformZ >= playerZ + 16f;
+            })
+            .ToArray();
+
+        float offset = 20f;
 
         float[] lanes = new float[] { -2.5f, 0f, 2.5f };
         float[] zPositions = new float[] { -12f, -8f, -4f, 0f, 4f, 8f, 12f, 16f };
@@ -389,18 +396,19 @@ public class PlayerController : MonoBehaviour
         bool foundSafe = false;
         Vector3 respawnPos = transform.position;
 
-        foreach (var platform in platformControllers)
+        foreach (var platform in respawnablePlatformControllers)
         {
             float platformZ = platform.transform.position.z;
-            for (int row = 0; row < zPositions.Length - 1; row++)
+            for (int row = zPositions.Length - 1; row >= 0; row--) // Start from the back rows
             {
-                for (int lane = 0; lane < lanes.Length; lane++)
+                for (int lane = 1; lane < lanes.Length; lane = (lane + 1) % lanes.Length)
                 {
                     bool[,] obstacles = platform.obstaclePositions;
                     bool safeHere = !obstacles[row, lane];
-                    bool safeAhead = !obstacles[row + 1, lane];
-                    if (safeHere && safeAhead)
+                    bool safeBehind = row == 0 || !obstacles[row - 1, lane]; // Check behind instead of ahead
+                    if (safeHere && safeBehind)
                     {
+                        offset = platformZ + zPositions[row];
                         safeLane = lane;
                         safeRow = row;
                         respawnPos = new Vector3(
@@ -417,6 +425,11 @@ public class PlayerController : MonoBehaviour
             }
             if (foundSafe)
                 break;
+        }
+
+        foreach (var controller in platformControllers)
+        {
+            controller.transform.parent.position += new Vector3(0, 0, offset);
         }
 
         // Fallback: if no safe spot found, use middle lane and keep current z position

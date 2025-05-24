@@ -39,6 +39,11 @@ public class PlayerController : MonoBehaviour
         "Avoid the obstacles to survive",
     };
 
+    public float invulnerableDuration = 3f;
+    private bool isInvulnerable = false;
+    private float invulnerableTimer = 0f;
+    private VisualElement invulnerableProgressBar;
+
     void Awake()
     {
         SetupUI();
@@ -52,6 +57,7 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleCamera();
         HandleSpawnCooldown();
+        HandleInvulnerability();
     }
 
     private void SetupUI()
@@ -60,6 +66,32 @@ public class PlayerController : MonoBehaviour
         gameOverLabel = uiDocument.rootVisualElement.Q<Label>("GameOverLabel");
         respawnLabel = uiDocument.rootVisualElement.Q<Label>("RespawnLabel");
         livesLabel = uiDocument.rootVisualElement.Q<Label>("LivesLabel");
+        invulnerableProgressBar = uiDocument.rootVisualElement.Q<VisualElement>(
+            "InvulnerableProgressBar"
+        );
+        if (invulnerableProgressBar != null)
+            invulnerableProgressBar.style.display = DisplayStyle.None;
+    }
+
+    private void HandleInvulnerability()
+    {
+        if (isInvulnerable)
+        {
+            invulnerableTimer -= Time.deltaTime;
+            if (invulnerableProgressBar != null)
+            {
+                float t = Mathf.Clamp01(invulnerableTimer / invulnerableDuration);
+                invulnerableProgressBar.style.display = DisplayStyle.Flex;
+                invulnerableProgressBar.style.unityBackgroundImageTintColor = new Color(1, 1, 1, t);
+                invulnerableProgressBar.style.scale = new Scale(new Vector3(t, t, 1));
+            }
+            if (invulnerableTimer <= 0f)
+            {
+                isInvulnerable = false;
+                if (invulnerableProgressBar != null)
+                    invulnerableProgressBar.style.display = DisplayStyle.None;
+            }
+        }
     }
 
     private void HandleInput()
@@ -213,7 +245,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Entered: " + other.gameObject.name);
         if (!spawnCooldown && other.gameObject.CompareTag("PlatformSpawnTrigger"))
         {
             SpawnPlatform(other);
@@ -225,11 +256,13 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
-            HandleDeath(other);
+            if (!isInvulnerable)
+                HandleDeath(other);
         }
         else if (other.gameObject.CompareTag("TutorialObstacle"))
         {
-            HandleDeath(other, false);
+            if (!isInvulnerable)
+                HandleDeath(other, false);
         }
     }
 
@@ -288,6 +321,17 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         Vector3 triggerPosition = other.gameObject.transform.position;
         Vector3 playerPosition = transform.position;
+
+        PlatformController[] platformControllers = FindObjectsByType<PlatformController>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+
+        foreach (var controller in platformControllers)
+        {
+            controller.speed = 0f;
+        }
+
         if (triggerPosition.z > playerPosition.z)
         {
             animator.SetTrigger("DeathA");
@@ -296,14 +340,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("DeathB");
         }
-        PlatformController[] platformControllers = FindObjectsByType<PlatformController>(
-            FindObjectsInactive.Include,
-            FindObjectsSortMode.None
-        );
-        foreach (var controller in platformControllers)
-        {
-            controller.speed = 0f;
-        }
+
         if (livesRemaining > 0 && reduceLives)
         {
             livesRemaining--;
@@ -338,52 +375,61 @@ public class PlayerController : MonoBehaviour
             FindObjectsInactive.Include,
             FindObjectsSortMode.None
         );
-        float respawnOffset = 20f;
-        foreach (var controller in platformControllers)
-        {
-            controller.transform.parent.position += new Vector3(0, 0, respawnOffset);
-        }
-        int desiredLane = 1;
-        int respawnRow = 0;
-        bool laneSet = false;
-        foreach (var controller in platformControllers)
-        {
-            if (Mathf.Abs(controller.transform.position.z - transform.position.z) < 10f)
-            {
-                bool[,] obstacles = controller.obstaclePositions;
-                if (!obstacles[respawnRow, desiredLane])
-                {
-                    currentLane = desiredLane;
-                    laneSet = true;
-                    break;
-                }
-                if (!obstacles[respawnRow, 0])
-                {
-                    currentLane = 0;
-                    laneSet = true;
-                    break;
-                }
-                if (!obstacles[respawnRow, 2])
-                {
-                    currentLane = 2;
-                    laneSet = true;
-                    break;
-                }
-            }
-        }
-        if (!laneSet)
-        {
-            currentLane = 1;
-        }
-        UpdateTargetPosition();
-        transform.position = new Vector3(
-            currentLane * laneWidth - laneWidth,
-            transform.position.y,
-            transform.position.z
-        );
 
-        // Destroy the other obstacle in the tutorial area
-        // Player Crashes to learn a lesson -> then path is clear next time, no lives lost
+        float offset = Random.Range(15f, 20f);
+        foreach (var controller in platformControllers)
+        {
+            controller.transform.parent.position += new Vector3(0, 0, offset);
+        }
+
+        float[] lanes = new float[] { -2.5f, 0f, 2.5f };
+        float[] zPositions = new float[] { -12f, -8f, -4f, 0f, 4f, 8f, 12f, 16f };
+        int safeLane = 1;
+        int safeRow = 0;
+        bool foundSafe = false;
+        Vector3 respawnPos = transform.position;
+
+        foreach (var platform in platformControllers)
+        {
+            float platformZ = platform.transform.position.z;
+            for (int row = 0; row < zPositions.Length - 1; row++)
+            {
+                for (int lane = 0; lane < lanes.Length; lane++)
+                {
+                    bool[,] obstacles = platform.obstaclePositions;
+                    bool safeHere = !obstacles[row, lane];
+                    bool safeAhead = !obstacles[row + 1, lane];
+                    if (safeHere && safeAhead)
+                    {
+                        safeLane = lane;
+                        safeRow = row;
+                        respawnPos = new Vector3(
+                            lanes[lane],
+                            transform.position.y,
+                            transform.position.z
+                        );
+                        foundSafe = true;
+                        break;
+                    }
+                }
+                if (foundSafe)
+                    break;
+            }
+            if (foundSafe)
+                break;
+        }
+
+        // Fallback: if no safe spot found, use middle lane and keep current z position
+        if (!foundSafe)
+        {
+            respawnPos = new Vector3(lanes[1], transform.position.y, transform.position.z);
+            safeLane = 1;
+        }
+
+        currentLane = safeLane;
+        UpdateTargetPosition();
+        transform.position = respawnPos;
+
         if (other.gameObject.CompareTag("TutorialObstacle"))
         {
             other.gameObject.SetActive(false);
@@ -397,6 +443,15 @@ public class PlayerController : MonoBehaviour
         }
         isDead = false;
         spawnCooldown = false;
+
+        // Start invulnerability
+        isInvulnerable = true;
+        invulnerableTimer = invulnerableDuration;
+        if (invulnerableProgressBar != null)
+        {
+            invulnerableProgressBar.style.display = DisplayStyle.Flex;
+            invulnerableProgressBar.style.scale = new Scale(Vector3.one);
+        }
     }
 
     private void GameOver()

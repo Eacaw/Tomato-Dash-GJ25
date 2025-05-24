@@ -266,6 +266,32 @@ public class PlayerController : MonoBehaviour
             if (!isInvulnerable)
                 HandleDeath(other, false);
         }
+        else if (other.gameObject.CompareTag("Door"))
+        {
+            PlatformController[] platformControllers = FindObjectsByType<PlatformController>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None
+            );
+
+            foreach (var controller in platformControllers)
+            {
+                controller.isActivePlatform = false;
+            }
+
+            PlatformController platformController =
+                other.transform.parent.transform.parent.GetComponentInChildren<PlatformController>();
+            if (platformController != null)
+            {
+                platformController.isActivePlatform = true;
+            }
+            StartCoroutine(HideDoorAfterDelay(other));
+        }
+    }
+
+    private IEnumerator HideDoorAfterDelay(Collider other)
+    {
+        yield return new WaitForSeconds(2f);
+        other.transform.parent.gameObject.SetActive(false);
     }
 
     private void HandleTutorialTrigger()
@@ -379,70 +405,27 @@ public class PlayerController : MonoBehaviour
             FindObjectsSortMode.None
         );
 
-        PlatformController[] respawnablePlatformControllers = platformControllers
-            .Where(controller =>
-            {
-                float platformZ = controller.transform.position.z;
-                float playerZ = transform.position.z;
-                return platformZ <= playerZ && platformZ >= playerZ + 16f;
-            })
-            .ToArray();
+        float offsetZ = 0f;
+        // Find the active platform
+        PlatformController closestPlatform = platformControllers
+            .Where(pc => pc.isActivePlatform)
+            .OrderBy(pc => Mathf.Abs(pc.transform.position.z - transform.position.z))
+            .FirstOrDefault();
 
-        float offset = 20f;
-
-        float[] lanes = new float[] { -2.5f, 0f, 2.5f };
-        float[] zPositions = new float[] { -12f, -8f, -4f, 0f, 4f, 8f, 12f, 16f };
-        int safeLane = 1;
-        int safeRow = 0;
-        bool foundSafe = false;
-        Vector3 respawnPos = transform.position;
-
-        foreach (var platform in respawnablePlatformControllers)
+        if (closestPlatform != null)
         {
-            float platformZ = platform.transform.position.z;
-            for (int row = zPositions.Length - 1; row >= 0; row--) // Start from the back rows
+            float playerZ = transform.position.z;
+            offsetZ = Mathf.Abs(closestPlatform.transform.position.z - playerZ) - 16;
+
+            foreach (var controller in platformControllers)
             {
-                for (int lane = 1; lane < lanes.Length; lane = (lane + 1) % lanes.Length)
-                {
-                    bool[,] obstacles = platform.obstaclePositions;
-                    bool safeHere = !obstacles[row, lane];
-                    bool safeBehind = row == 0 || !obstacles[row - 1, lane]; // Check behind instead of ahead
-                    if (safeHere && safeBehind)
-                    {
-                        offset = platformZ + zPositions[row];
-                        safeLane = lane;
-                        safeRow = row;
-                        respawnPos = new Vector3(
-                            lanes[lane],
-                            transform.position.y,
-                            transform.position.z
-                        );
-                        foundSafe = true;
-                        break;
-                    }
-                }
-                if (foundSafe)
-                    break;
+                controller.transform.parent.position += new Vector3(0, 0, offsetZ);
             }
-            if (foundSafe)
-                break;
         }
 
-        foreach (var controller in platformControllers)
-        {
-            controller.transform.parent.position += new Vector3(0, 0, offset);
-        }
-
-        // Fallback: if no safe spot found, use middle lane and keep current z position
-        if (!foundSafe)
-        {
-            respawnPos = new Vector3(lanes[1], transform.position.y, transform.position.z);
-            safeLane = 1;
-        }
-
-        currentLane = safeLane;
+        // Reset player position to z = 0
+        currentLane = 1; // Middle lane
         UpdateTargetPosition();
-        transform.position = respawnPos;
 
         if (other.gameObject.CompareTag("TutorialObstacle"))
         {
@@ -459,7 +442,6 @@ public class PlayerController : MonoBehaviour
         spawnCooldown = false;
 
         // Start invulnerability
-
         invulnerableTimer = invulnerableDuration;
         if (invulnerableProgressBar != null)
         {

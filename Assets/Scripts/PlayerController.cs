@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
     {
         isJumping = true;
         animator.SetTrigger("Jump");
-        float jumpHeight = 1.5f;
+        float jumpHeight = 1.8f;
         float jumpDuration = 0.5f;
         float elapsedTime = 0f;
         Vector3 startPosition = transform.position;
@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("TutorialTrigger"))
         {
             HandleTutorialTrigger();
-            Debug.Log("Tutorial Trigger Entered");
+            other.gameObject.SetActive(false);
         }
         else if (other.gameObject.CompareTag("Obstacle"))
         {
@@ -278,6 +278,7 @@ public class PlayerController : MonoBehaviour
             new Vector3(0, 0, other.gameObject.transform.parent.position.z + 64),
             Quaternion.identity
         );
+        other.gameObject.SetActive(false);
         spawnCooldown = true;
         spawnCooldownTimer = spawnCooldownTime;
     }
@@ -385,7 +386,7 @@ public class PlayerController : MonoBehaviour
         // Player Crashes to learn a lesson -> then path is clear next time, no lives lost
         if (other.gameObject.CompareTag("TutorialObstacle"))
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
 
         animator.SetTrigger("Respawn");

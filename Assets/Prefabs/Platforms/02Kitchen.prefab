@@ -2075,6 +2075,7 @@ MonoBehaviour:
   speed: 7.5
   isInitialPlatform: 0
   isActivePlatform: 0
+  respawnLane: 0
   LeftLaneObstacles: 0000000001000000
   MiddleLaneObstacles: 0000010000000101
   RightLaneObstacles: 0001010101010101

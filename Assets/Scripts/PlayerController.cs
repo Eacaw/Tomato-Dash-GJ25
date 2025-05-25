@@ -457,4 +457,52 @@ public class PlayerController : MonoBehaviour
     {
         MoveToEndGameScene();
     }
+
+    private void OnBeat()
+    {
+        StartCoroutine(CameraJump());
+    }
+
+    private IEnumerator CameraJump()
+    {
+        // Camera jump parameters
+        float jumpHeight = 0.2f;
+        float jumpDuration = 0.1f;
+        float elapsedTime = 0f;
+        float smoothSpeed = 10f;
+
+        // Store original camera position
+        Vector3 originalPosition = Camera.transform.localPosition;
+        Vector3 peakPosition = originalPosition + Vector3.up * jumpHeight;
+        
+        // Move up
+        while (elapsedTime < jumpDuration)
+        {
+            Camera.transform.localPosition = Vector3.Lerp(
+                Camera.transform.localPosition,
+                peakPosition,
+                Time.deltaTime * smoothSpeed
+            );
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Reset for descent
+        elapsedTime = 0f;
+        
+        // Move down
+        while (elapsedTime < jumpDuration)
+        {
+            Camera.transform.localPosition = Vector3.Lerp(
+                Camera.transform.localPosition,
+                originalPosition,
+                Time.deltaTime * smoothSpeed
+            );
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Ensure we return to the exact original position
+        Camera.transform.localPosition = originalPosition;
+    }
 }

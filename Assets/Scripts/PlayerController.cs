@@ -439,7 +439,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         foreach (var controller in platformControllers)
         {
-            controller.speed = 10f;
+            controller.speed = 7.5f;
         }
         isDead = false;
         spawnCooldown = false;

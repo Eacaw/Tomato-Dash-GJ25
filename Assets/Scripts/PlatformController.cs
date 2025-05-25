@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class PlatformController : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 7.5f;
     public bool isInitialPlatform = false;
     public bool isActivePlatform = false;
 

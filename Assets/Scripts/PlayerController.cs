@@ -290,7 +290,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator HideDoorAfterDelay(Collider other)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.2f);
         other.transform.parent.gameObject.SetActive(false);
     }
 
@@ -424,7 +424,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Reset player position to z = 0
-        currentLane = 1; // Middle lane
+        currentLane = closestPlatform.respawnLane;
         UpdateTargetPosition();
 
         if (other.gameObject.CompareTag("TutorialObstacle"))

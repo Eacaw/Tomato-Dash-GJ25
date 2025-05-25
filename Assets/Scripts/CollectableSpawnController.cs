@@ -23,41 +23,39 @@ public class CoinController : MonoBehaviour
         int laneIndex = Random.Range(0, lanes.Length);
         for (int i = 0; i < collectableCount; i++)
         {
-            // Determine next lane index (at most one away from previous)
-            int minLane = Mathf.Max(0, laneIndex - 1);
-            int maxLane = Mathf.Min(lanes.Length - 1, laneIndex + 1);
+            // Create a list of available lanes for the current row
+            int[] availableLanes = new int[lanes.Length];
+            int count = 0;
 
-            // Find a valid lane that doesn't have an obstacle
-            bool validLaneFound = false;
-            for (int attempt = 0; attempt < lanes.Length; attempt++)
+            for (int lane = 0; lane < lanes.Length; lane++)
             {
-                laneIndex = Random.Range(minLane, maxLane + 1);
-                if (!platformController.obstaclePositions[i, laneIndex])
+                if (!platformController.obstaclePositions[i, lane])
                 {
-                    validLaneFound = true;
-                    break;
+                    availableLanes[count] = lane;
+                    count++;
                 }
             }
 
-            // If no valid lane is found, skip this collectable
-            if (!validLaneFound)
+            // If there are available lanes, randomly pick one and place a collectable
+            if (count > 0)
             {
-                continue;
+                int randomLaneIndex = Random.Range(0, count);
+                int chosenLane = availableLanes[randomLaneIndex];
+
+                Vector3 targetPos = new Vector3(
+                    lanes[chosenLane],
+                    1.0f,
+                    platformController.transform.position.z + zPositions[i]
+                );
+
+                // Instantiate the collectable
+                GameObject coin = Instantiate(
+                    collectablePrefab,
+                    targetPos,
+                    Quaternion.identity,
+                    this.transform
+                );
             }
-
-            Vector3 targetPos = new Vector3(
-                lanes[laneIndex],
-                1.0f,
-                platformController.transform.position.z + zPositions[i]
-            );
-
-            // Todo use object pooling
-            GameObject coin = Instantiate(
-                collectablePrefab,
-                targetPos,
-                Quaternion.identity,
-                this.transform
-            );
         }
     }
 }

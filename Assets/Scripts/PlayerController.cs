@@ -46,11 +46,20 @@ public class PlayerController : MonoBehaviour
     private float invulnerableTimer = 0f;
     private VisualElement invulnerableProgressBar;
 
+    private BeatController beatController;
+
     void Awake()
     {
         SetupUI();
         targetPosition = transform.position;
         animator = GetComponent<Animator>();
+
+        // Beat Controller logic
+        if (beatController == null)
+        {
+            beatController = FindFirstObjectByType<BeatController>();
+            beatController.AddBeatListener(OnBeat);
+        }
     }
 
     void Update()
@@ -456,5 +465,53 @@ public class PlayerController : MonoBehaviour
     private void GameOver()
     {
         MoveToEndGameScene();
+    }
+
+    private void OnBeat()
+    {
+        StartCoroutine(CameraJump());
+    }
+
+    private IEnumerator CameraJump()
+    {
+        // Camera jump parameters
+        float jumpHeight = 0.2f;
+        float jumpDuration = 0.1f;
+        float elapsedTime = 0f;
+        float smoothSpeed = 10f;
+
+        // Store original camera position
+        Vector3 originalPosition = camera.transform.localPosition;
+        Vector3 peakPosition = originalPosition + Vector3.up * jumpHeight;
+        
+        // Move up
+        while (elapsedTime < jumpDuration)
+        {
+            camera.transform.localPosition = Vector3.Lerp(
+                camera.transform.localPosition,
+                peakPosition,
+                Time.deltaTime * smoothSpeed
+            );
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Reset for descent
+        elapsedTime = 0f;
+        
+        // Move down
+        while (elapsedTime < jumpDuration)
+        {
+            camera.transform.localPosition = Vector3.Lerp(
+                camera.transform.localPosition,
+                originalPosition,
+                Time.deltaTime * smoothSpeed
+            );
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Ensure we return to the exact original position
+        camera.transform.localPosition = originalPosition;
     }
 }

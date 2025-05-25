@@ -2877,11 +2877,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: crate_lettuce (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5299366173847780382}
   m_SourcePrefab: {fileID: 100100000, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+--- !u!1 &564460047057200445 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+  m_PrefabInstance: {fileID: 798321024443848812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5299366173847780382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564460047057200445}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 0.99805427, z: 2.0000048}
+  m_Center: {x: 0.00000011920929, y: 0.49902517, z: -0.00000017881393}
 --- !u!4 &909320032831340423 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
@@ -3639,16 +3672,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: crate_lettuce (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 154210643078998768}
   m_SourcePrefab: {fileID: 100100000, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
 --- !u!4 &2332474996002386326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
   m_PrefabInstance: {fileID: 2869959389292172925}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3104472224468544300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+  m_PrefabInstance: {fileID: 2869959389292172925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &154210643078998768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104472224468544300}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 0.99805427, z: 2.0000048}
+  m_Center: {x: 0.00000011920929, y: 0.49902517, z: -0.00000017881393}
 --- !u!1001 &3328525727647617903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4097,16 +4163,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: pillar_B
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7af0d10cddc4d33498ac1acdeb2b0693, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7af0d10cddc4d33498ac1acdeb2b0693, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 325404717819588552}
   m_SourcePrefab: {fileID: 100100000, guid: 7af0d10cddc4d33498ac1acdeb2b0693, type: 3}
 --- !u!4 &3486438024929815449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7af0d10cddc4d33498ac1acdeb2b0693, type: 3}
   m_PrefabInstance: {fileID: 4028726688981863538}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4263079560384049443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7af0d10cddc4d33498ac1acdeb2b0693, type: 3}
+  m_PrefabInstance: {fileID: 4028726688981863538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &325404717819588552
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263079560384049443}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 4.1, z: 1.0000002}
+  m_Center: {x: 0, y: 2.05, z: -0.00000008940697}
 --- !u!1001 &4200595190184573251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5255,11 +5354,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarrotCrate+Lid
       objectReference: {fileID: 0}
+    - target: {fileID: 6815535337634669087, guid: 3782729ccf00f5e429bad2db34a3b4c8, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6815535337634669087, guid: 3782729ccf00f5e429bad2db34a3b4c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5519542908846592905}
   m_SourcePrefab: {fileID: 100100000, guid: 3782729ccf00f5e429bad2db34a3b4c8, type: 3}
+--- !u!1 &594192077846556586 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6815535337634669087, guid: 3782729ccf00f5e429bad2db34a3b4c8, type: 3}
+  m_PrefabInstance: {fileID: 6245186241918340533}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5519542908846592905
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594192077846556586}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &7050386563932328022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3995637305974758883, guid: 3782729ccf00f5e429bad2db34a3b4c8, type: 3}
@@ -5539,11 +5671,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: crate_lettuce
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4954532233119340128}
   m_SourcePrefab: {fileID: 100100000, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+--- !u!1 &5882219293848842695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+  m_PrefabInstance: {fileID: 6728587410462084246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4954532233119340128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5882219293848842695}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 0.99805427, z: 2.0000048}
+  m_Center: {x: 0.00000011920929, y: 0.49902517, z: -0.00000017881393}
 --- !u!4 &6551057287396420477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
@@ -5951,11 +6116,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: kitchentable_sink_large
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d36aec4079d057640ad6565191051b4a, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d36aec4079d057640ad6565191051b4a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4837304912862033698}
   m_SourcePrefab: {fileID: 100100000, guid: d36aec4079d057640ad6565191051b4a, type: 3}
+--- !u!1 &7294682461253128739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d36aec4079d057640ad6565191051b4a, type: 3}
+  m_PrefabInstance: {fileID: 7636560005206830962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4837304912862033698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294682461253128739}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 1.8016261, z: 2}
+  m_Center: {x: -1.0671318e-16, y: 0.90081304, z: -0.000000029802322}
 --- !u!4 &7957926100732184729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d36aec4079d057640ad6565191051b4a, type: 3}
@@ -6363,11 +6561,44 @@ PrefabInstance:
       propertyPath: m_Name
       value: crate_lettuce (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7886272769509505828}
   m_SourcePrefab: {fileID: 100100000, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+--- !u!1 &7138016218538089954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+  m_PrefabInstance: {fileID: 8056440827666079923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7886272769509505828
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138016218538089954}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 0.99805427, z: 2.0000048}
+  m_Center: {x: -0.00000035762787, y: 0.49902517, z: -0.00000017881393}
 --- !u!4 &7513274397990373208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
@@ -6495,16 +6726,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: crate_lettuce (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 380783506669075708}
   m_SourcePrefab: {fileID: 100100000, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
 --- !u!4 &8632610899492713085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
   m_PrefabInstance: {fileID: 8090585465009264022}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8973107027318270151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+  m_PrefabInstance: {fileID: 8090585465009264022}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &380783506669075708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973107027318270151}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 0.99805427, z: 2.0000048}
+  m_Center: {x: 0.00000011920929, y: 0.49902517, z: -0.00000017881393}
 --- !u!1001 &8091758711553471792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6557,16 +6821,49 @@ PrefabInstance:
       propertyPath: m_Name
       value: crate_lettuce (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 339147123985894387}
   m_SourcePrefab: {fileID: 100100000, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
 --- !u!4 &8629190251181265627 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
   m_PrefabInstance: {fileID: 8091758711553471792}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8974225437867378785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3d6e8c3ad14ab1749bc31e4b70231972, type: 3}
+  m_PrefabInstance: {fileID: 8091758711553471792}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &339147123985894387
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8974225437867378785}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 0.99805427, z: 2.0000048}
+  m_Center: {x: 0.00000011920929, y: 0.49902517, z: -0.00000010430813}
 --- !u!1001 &8227322549832209810
 PrefabInstance:
   m_ObjectHideFlags: 0

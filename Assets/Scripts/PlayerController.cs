@@ -290,7 +290,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator HideDoorAfterDelay(Collider other)
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0f);
         other.transform.parent.gameObject.SetActive(false);
     }
 

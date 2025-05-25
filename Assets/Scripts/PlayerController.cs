@@ -46,11 +46,20 @@ public class PlayerController : MonoBehaviour
     private float invulnerableTimer = 0f;
     private VisualElement invulnerableProgressBar;
 
+    private BeatController beatController;
+
     void Awake()
     {
         SetupUI();
         targetPosition = transform.position;
         animator = GetComponent<Animator>();
+
+        // Beat Controller logic
+        if (beatController == null)
+        {
+            beatController = FindFirstObjectByType<BeatController>();
+            beatController.AddBeatListener(OnBeat);
+        }
     }
 
     void Update()
@@ -472,14 +481,14 @@ public class PlayerController : MonoBehaviour
         float smoothSpeed = 10f;
 
         // Store original camera position
-        Vector3 originalPosition = Camera.transform.localPosition;
+        Vector3 originalPosition = camera.transform.localPosition;
         Vector3 peakPosition = originalPosition + Vector3.up * jumpHeight;
         
         // Move up
         while (elapsedTime < jumpDuration)
         {
-            Camera.transform.localPosition = Vector3.Lerp(
-                Camera.transform.localPosition,
+            camera.transform.localPosition = Vector3.Lerp(
+                camera.transform.localPosition,
                 peakPosition,
                 Time.deltaTime * smoothSpeed
             );
@@ -493,8 +502,8 @@ public class PlayerController : MonoBehaviour
         // Move down
         while (elapsedTime < jumpDuration)
         {
-            Camera.transform.localPosition = Vector3.Lerp(
-                Camera.transform.localPosition,
+            camera.transform.localPosition = Vector3.Lerp(
+                camera.transform.localPosition,
                 originalPosition,
                 Time.deltaTime * smoothSpeed
             );
@@ -503,6 +512,6 @@ public class PlayerController : MonoBehaviour
         }
         
         // Ensure we return to the exact original position
-        Camera.transform.localPosition = originalPosition;
+        camera.transform.localPosition = originalPosition;
     }
 }

@@ -5142,6 +5142,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: kitchencounter_straight_A_backsplash (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2235857484427070403, guid: fc021904a72def94caffac53619fe7be, type: 3}
+      propertyPath: m_Size.x
+      value: 1.4368384
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235857484427070403, guid: fc021904a72def94caffac53619fe7be, type: 3}
+      propertyPath: m_Center.x
+      value: -0.28158098
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235857484427070403, guid: fc021904a72def94caffac53619fe7be, type: 3}
+      propertyPath: m_Center.z
+      value: 0.020951506
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6401,6 +6413,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: kitchentable_A
       objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Size.x
+      value: 1.4462045
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.x
+      value: 0.2768977
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.y
+      value: 0.49812412
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.z
+      value: -1.1654805e-15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7256,6 +7284,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4058707785923065446}
     m_Modifications:
+    - target: {fileID: 649653342975778222, guid: a2619bee16c3e764c9de77f0917ebddc, type: 3}
+      propertyPath: m_Size.x
+      value: 1.809356
+      objectReference: {fileID: 0}
+    - target: {fileID: 649653342975778222, guid: a2619bee16c3e764c9de77f0917ebddc, type: 3}
+      propertyPath: m_Size.z
+      value: 1.7249802
+      objectReference: {fileID: 0}
+    - target: {fileID: 649653342975778222, guid: a2619bee16c3e764c9de77f0917ebddc, type: 3}
+      propertyPath: m_Center.x
+      value: 0.095322445
+      objectReference: {fileID: 0}
+    - target: {fileID: 649653342975778222, guid: a2619bee16c3e764c9de77f0917ebddc, type: 3}
+      propertyPath: m_Center.z
+      value: -0.13751014
+      objectReference: {fileID: 0}
     - target: {fileID: 2561678089082395151, guid: a2619bee16c3e764c9de77f0917ebddc, type: 3}
       propertyPath: m_Name
       value: kitchencounter_straight_B_backsplash

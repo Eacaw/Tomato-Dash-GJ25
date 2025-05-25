@@ -2080,9 +2080,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3914a683d967be149a344feb1b307055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7.5
   isInitialPlatform: 0
   isActivePlatform: 0
+  respawnLane: 2
   LeftLaneObstacles: 0001010100010001
   MiddleLaneObstacles: 0000010100010001
   RightLaneObstacles: 0101000000010000

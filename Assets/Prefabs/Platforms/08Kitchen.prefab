@@ -1716,7 +1716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4058707785923065446}
   m_Layer: 0
-  m_Name: KitchenPlatformTemplate
+  m_Name: 08Kitchen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

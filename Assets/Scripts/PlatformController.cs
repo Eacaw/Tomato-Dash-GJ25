@@ -5,9 +5,10 @@ using System.Collections.Generic;
 
 public class PlatformController : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 7.5f;
     public bool isInitialPlatform = false;
     public bool isActivePlatform = false;
+    public int respawnLane = 1; // 0 = left, 1 = middle, 2 = right
 
     [SerializeField]
     private bool[] LeftLaneObstacles = new bool[8];

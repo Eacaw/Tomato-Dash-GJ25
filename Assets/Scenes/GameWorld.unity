@@ -369,6 +369,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: respawnLane
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: 'LeftLaneObstacles.Array.data[7]'
       value: 0
       objectReference: {fileID: 0}
@@ -1854,6 +1858,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: respawnLane
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: isActivePlatform
       value: 1
       objectReference: {fileID: 0}
@@ -1928,9 +1936,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 330585545}
   prefabsToInstantiate:
-  - {fileID: 6928381561504825917, guid: e183749aabc520e4cb8cdff990e2b075, type: 3}
-  - {fileID: 6928381561504825917, guid: 4139d56121499fc4d99c619066c6309d, type: 3}
-  - {fileID: 6928381561504825917, guid: bdefed6c85357e64395dbd6cc4273cb1, type: 3}
+  - {fileID: 6928381561504825917, guid: 9b6102f791ca937478d3ff76c25c7e84, type: 3}
+  - {fileID: 6928381561504825917, guid: 83bafdec95e3859499a6aa153b70b7dd, type: 3}
+  - {fileID: 6928381561504825917, guid: f87804f0023b9e24fb80cd2c64d2dc60, type: 3}
   tutorialImages:
   - {fileID: 21300000, guid: 656e025cb3b31b44e8008457325ba3d4, type: 3}
   - {fileID: 21300000, guid: 60c699d5ebaf83b4b82b51447292aa34, type: 3}
@@ -4769,6 +4777,10 @@ PrefabInstance:
     - target: {fileID: 7657144660134306317, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
+      propertyPath: respawnLane
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9148963994009669861, guid: 9eb63473438aba344827ffde4ead8584, type: 3}
       propertyPath: 'LeftLaneObstacles.Array.data[3]'

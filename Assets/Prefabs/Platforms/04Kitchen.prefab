@@ -2156,6 +2156,7 @@ MonoBehaviour:
   speed: 7.5
   isInitialPlatform: 0
   isActivePlatform: 0
+  respawnLane: 1
   LeftLaneObstacles: 0001000100010101
   MiddleLaneObstacles: 0000000100000000
   RightLaneObstacles: 0001010100010001
@@ -5643,6 +5644,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4058707785923065446}
     m_Modifications:
+    - target: {fileID: 962278057940149803, guid: 20367211efe767a40939b0f5a88bdb49, type: 3}
+      propertyPath: m_Size.x
+      value: 2.673469
+      objectReference: {fileID: 0}
+    - target: {fileID: 962278057940149803, guid: 20367211efe767a40939b0f5a88bdb49, type: 3}
+      propertyPath: m_Center.x
+      value: 0.16326602
+      objectReference: {fileID: 0}
+    - target: {fileID: 962278057940149803, guid: 20367211efe767a40939b0f5a88bdb49, type: 3}
+      propertyPath: m_Center.y
+      value: 0.49812412
+      objectReference: {fileID: 0}
+    - target: {fileID: 962278057940149803, guid: 20367211efe767a40939b0f5a88bdb49, type: 3}
+      propertyPath: m_Center.z
+      value: 1.1117496e-15
+      objectReference: {fileID: 0}
     - target: {fileID: 7317164530879106970, guid: 20367211efe767a40939b0f5a88bdb49, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.4
@@ -7125,6 +7142,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4058707785923065446}
     m_Modifications:
+    - target: {fileID: 2813569574356899606, guid: 03c177cbb5888634baa6e2a7edb52dbc, type: 3}
+      propertyPath: m_Size.x
+      value: 2.7381873
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813569574356899606, guid: 03c177cbb5888634baa6e2a7edb52dbc, type: 3}
+      propertyPath: m_Center.x
+      value: 0.13090609
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813569574356899606, guid: 03c177cbb5888634baa6e2a7edb52dbc, type: 3}
+      propertyPath: m_Center.z
+      value: 4.2195666e-16
+      objectReference: {fileID: 0}
     - target: {fileID: 4866673410229471455, guid: 03c177cbb5888634baa6e2a7edb52dbc, type: 3}
       propertyPath: m_Name
       value: kitchentable_sink_large_decorated
@@ -8089,6 +8118,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: kitchentable_A (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2475963
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.x
+      value: -0.11987212
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.y
+      value: 0.49812412
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.z
+      value: -1.3709907e-15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8348,6 +8393,22 @@ PrefabInstance:
     - target: {fileID: 760434316953834054, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
       propertyPath: m_Name
       value: kitchentable_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3895471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.x
+      value: 0.037227314
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.y
+      value: 0.49812412
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.z
+      value: -2.0142915e-16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11046,6 +11107,22 @@ PrefabInstance:
     - target: {fileID: 760434316953834054, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
       propertyPath: m_Name
       value: kitchentable_A (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Size.x
+      value: 1.6178827
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.x
+      value: 0.19105892
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.y
+      value: 0.49812412
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306577032017299384, guid: e022eac45c9baf84f889beabdc98d784, type: 3}
+      propertyPath: m_Center.z
+      value: -1.7041911e-15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

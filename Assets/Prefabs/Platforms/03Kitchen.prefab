@@ -5871,8 +5871,16 @@ PrefabInstance:
       value: kitchencounter_sink_backsplash
       objectReference: {fileID: 0}
     - target: {fileID: 4840556237317532533, guid: 6aab6da882bb08541b3aa238f87701df, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5864697
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840556237317532533, guid: 6aab6da882bb08541b3aa238f87701df, type: 3}
       propertyPath: m_Center.x
-      value: 0
+      value: -0.20676544
+      objectReference: {fileID: 0}
+    - target: {fileID: 4840556237317532533, guid: 6aab6da882bb08541b3aa238f87701df, type: 3}
+      propertyPath: m_Center.z
+      value: 0.020951508
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6585,7 +6593,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e65d83ad4e08499469958f69e2fb6fbc, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5132978836740491681}
+      addedObject: {fileID: 3828460886156192069}
   m_SourcePrefab: {fileID: 100100000, guid: e65d83ad4e08499469958f69e2fb6fbc, type: 3}
 --- !u!4 &7397919947121732826 stripped
 Transform:
@@ -6597,16 +6605,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e65d83ad4e08499469958f69e2fb6fbc, type: 3}
   m_PrefabInstance: {fileID: 6998604281365056305}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &5132978836740491681
-BoxCollider2D:
+--- !u!65 &3828460886156192069
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7917715526913619552}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -6615,34 +6620,12 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -3.4878483e-15, y: 1.25}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 2.0000005, y: 2.5}
-  m_EdgeRadius: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3252625, y: 2.5, z: 1.3999614}
+  m_Center: {x: -0.23942854, y: 1.25, z: -0.3000198}
 --- !u!1001 &7045550578037612787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8143,6 +8126,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: kitchencounter_straight_A_backsplash
       objectReference: {fileID: 0}
+    - target: {fileID: 2235857484427070403, guid: fc021904a72def94caffac53619fe7be, type: 3}
+      propertyPath: m_Size.z
+      value: 1.409456
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235857484427070403, guid: fc021904a72def94caffac53619fe7be, type: 3}
+      propertyPath: m_Center.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235857484427070403, guid: fc021904a72def94caffac53619fe7be, type: 3}
+      propertyPath: m_Center.z
+      value: -0.2952724
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8562,6 +8557,18 @@ PrefabInstance:
     - target: {fileID: 653525654801501259, guid: fc021904a72def94caffac53619fe7be, type: 3}
       propertyPath: m_Name
       value: kitchencounter_straight_A_backsplash (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235857484427070403, guid: fc021904a72def94caffac53619fe7be, type: 3}
+      propertyPath: m_Size.z
+      value: 1.435824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235857484427070403, guid: fc021904a72def94caffac53619fe7be, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2235857484427070403, guid: fc021904a72def94caffac53619fe7be, type: 3}
+      propertyPath: m_Center.z
+      value: -0.28208894
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         "Move left/right between lanes",
         "Jump over obstacles on the floor",
-        "Collect apples to gain points",
+        "Collect tomatoes to gain points",
         "Avoid the obstacles to survive",
     };
 
@@ -483,7 +483,7 @@ public class PlayerController : MonoBehaviour
         // Store original camera position
         Vector3 originalPosition = camera.transform.localPosition;
         Vector3 peakPosition = originalPosition + Vector3.up * jumpHeight;
-        
+
         // Move up
         while (elapsedTime < jumpDuration)
         {
@@ -495,10 +495,10 @@ public class PlayerController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
+
         // Reset for descent
         elapsedTime = 0f;
-        
+
         // Move down
         while (elapsedTime < jumpDuration)
         {
@@ -510,7 +510,7 @@ public class PlayerController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
+
         // Ensure we return to the exact original position
         camera.transform.localPosition = originalPosition;
     }

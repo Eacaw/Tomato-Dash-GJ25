@@ -110,7 +110,11 @@ public class PlayerController : MonoBehaviour
         bool laneChanged = false;
         float turnDirection = 0f;
 
-        if (Input.GetAxis("Horizontal") < 0 && currentLane > 0 && !isDead)
+        if (
+            (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            && currentLane > 0
+            && !isDead
+        )
         {
             currentLane--;
             UpdateTargetPosition();
@@ -119,7 +123,12 @@ public class PlayerController : MonoBehaviour
             turnDirection = -1f;
             animator.SetTrigger("StrafeLeft");
         }
-        else if (Input.GetAxis("Horizontal") > 0 && currentLane < 2 && !isDead)
+
+        if (
+            (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            && currentLane < 2
+            && !isDead
+        )
         {
             currentLane++;
             UpdateTargetPosition();
@@ -277,29 +286,28 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Door"))
         {
-            PlatformController[] platformControllers = FindObjectsByType<PlatformController>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None
-            );
-
-            foreach (var controller in platformControllers)
-            {
-                controller.isActivePlatform = false;
-            }
-
-            PlatformController platformController =
-                other.transform.parent.transform.parent.GetComponentInChildren<PlatformController>();
-            if (platformController != null)
-            {
-                platformController.isActivePlatform = true;
-            }
-            StartCoroutine(HideDoorAfterDelay(other));
+            HandlePassThroughDoor(other);
         }
     }
 
-    private IEnumerator HideDoorAfterDelay(Collider other)
+    private void HandlePassThroughDoor(Collider other)
     {
-        yield return new WaitForSeconds(0f);
+        PlatformController[] platformControllers = FindObjectsByType<PlatformController>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+
+        foreach (var controller in platformControllers)
+        {
+            controller.isActivePlatform = false;
+        }
+
+        PlatformController platformController =
+            other.transform.parent.transform.parent.GetComponentInChildren<PlatformController>();
+        if (platformController != null)
+        {
+            platformController.isActivePlatform = true;
+        }
         other.transform.parent.gameObject.SetActive(false);
     }
 

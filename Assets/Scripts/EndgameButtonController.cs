@@ -29,8 +29,16 @@ public class EndgameButtonController : MonoBehaviour
         }
 
         // Add listeners to the buttons
-        tryAgainButton.onClick.AddListener(() => LoadScene("GameWorld"));
-        mainMenuButton.onClick.AddListener(() => LoadScene("MainMenu"));
+        tryAgainButton.onClick.AddListener(() =>
+        {
+            Destroy(scoreController.gameObject); // Reset score by destroying its parent
+            LoadScene("GameWorld");
+        });
+        mainMenuButton.onClick.AddListener(() =>
+        {
+            Destroy(scoreController.gameObject);
+            LoadScene("MainMenu");
+        });
     }
 
     public void LoadScene(string sceneName)
